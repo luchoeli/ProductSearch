@@ -1,0 +1,5 @@
+ext {
+    apiVersions {
+      nav_version = "2.3.4"
+    }
+}
