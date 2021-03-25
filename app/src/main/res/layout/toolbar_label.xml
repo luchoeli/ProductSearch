@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +17,7 @@
         app:contentInsetLeft="@dimen/zero"
         app:contentInsetStart="@dimen/zero"
         app:contentInsetStartWithNavigation="@dimen/zero"
-        android:background="@color/white"
+        android:background="@color/ml_yellow"
         android:theme="@style/LabelActionBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout

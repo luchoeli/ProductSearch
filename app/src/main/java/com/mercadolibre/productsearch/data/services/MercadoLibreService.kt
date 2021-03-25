@@ -3,14 +3,14 @@ package com.mercadolibre.productsearch.data.services
 import com.mercadolibre.productsearch.data.ProductMapper
 import com.mercadolibre.productsearch.data.Result
 import com.mercadolibre.productsearch.data.services.api.MercadoLibreAPI
-import com.mercadolibre.productsearch.domain.entities.Products
+import com.mercadolibre.productsearch.domain.entities.Product
 import java.io.IOException
 
 class MercadoLibreService {
     private val api = MercadoLibreRequestGenerator()
     private val mapper = ProductMapper()
 
-    fun getProductsByString(searchInput: String): Result<List<Products>> {
+    fun getProductsByString(searchInput: String): Result<List<Product>> {
         try {
             val apiCall = api.createService(MercadoLibreAPI::class.java).getProductsRequest(searchInput)
             val response = apiCall.execute()

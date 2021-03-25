@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mercadolibre.productsearch.data.Result
 import com.mercadolibre.productsearch.data.repositories.ProductsRepository
-import com.mercadolibre.productsearch.domain.entities.Products
+import com.mercadolibre.productsearch.domain.entities.Product
 import com.mercadolibre.productsearch.presentation.base.Status
 import com.mercadolibre.productsearch.presentation.base.UiStatus
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SearchViewModel(private val repository: ProductsRepository) : ViewModel() {
-    private var _productsLiveData = MutableLiveData<UiStatus<List<Products>>>()
+    private var _productsLiveData = MutableLiveData<UiStatus<List<Product>>>()
 
-    val productsLiveData: LiveData<UiStatus<List<Products>>>
+    val productsLiveData: LiveData<UiStatus<List<Product>>>
         get() = _productsLiveData
 
     fun getProducts(inputSearch: String) = viewModelScope.launch {
