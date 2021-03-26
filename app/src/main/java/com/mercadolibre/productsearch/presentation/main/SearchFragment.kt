@@ -37,14 +37,16 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
         initRecyclerView()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun initRecyclerView() {
         productListAdapter = ProductListAdapter(this)
         val layoutManagers =  LinearLayoutManager(this.context)
-        val dividerItemDecoration = DividerItemDecoration(this.context, layoutManagers.orientation )
         binding.recyclerView.apply {
             layoutManager = layoutManagers
             adapter = productListAdapter
-            addItemDecoration(dividerItemDecoration)
         }
     }
 
@@ -91,6 +93,10 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
         findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProductDetailsFragment(item))
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun onQueryTextSubmit(searchInput: String?): Boolean {
         searchInput?.let {
             viewModel.getProducts(searchInput)
@@ -101,5 +107,4 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
     override fun onQueryTextChange(p0: String?): Boolean {
         return false
     }
-
 }
