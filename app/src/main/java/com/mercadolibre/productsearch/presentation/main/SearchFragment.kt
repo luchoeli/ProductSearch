@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mercadolibre.productsearch.R
 import com.mercadolibre.productsearch.databinding.FragmentSearchBinding
 import com.mercadolibre.productsearch.domain.entities.Product
 import com.mercadolibre.productsearch.presentation.base.Status
@@ -54,17 +56,26 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
     private fun updateUI(uiStatus: UiStatus<List<Product>>) {
         when (uiStatus.status) {
             Status.LOADING -> {
+                showLoading(true)
             }
             Status.SUCCESS -> {
+                showLoading(false)
                 drawProducts(uiStatus.data)
             }
             Status.ERROR -> {
+                showLoading(false)
                 showError(uiStatus.error)
             }
         }
     }
 
+    private fun showLoading(showLoader: Boolean) {
+        binding.searchLoader.root.isVisible = showLoader
+        binding.recyclerView.isVisible = !showLoader
+    }
+
     private fun drawProducts(products: List<Product>?) {
+
         products?.let { items ->
             productListAdapter.updateItems(items)
             productListAdapter.notifyDataSetChanged()
@@ -75,8 +86,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
         Toast.makeText(context, error?.message, Toast.LENGTH_LONG).show()
     }
 
-    override fun onProductClicked(item: String) {
+    override fun onProductClicked(item: Product) {
         Toast.makeText(this.context, "lucho", Toast.LENGTH_LONG).show()
+        findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProductDetailsFragment(item))
     }
 
     override fun onQueryTextSubmit(searchInput: String?): Boolean {

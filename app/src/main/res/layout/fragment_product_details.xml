@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.detail.ProductDetailsFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/product_details_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/image_placeholder"/>
+
+            <TextView
+                android:id="@+id/product_details_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_address_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address info" />
+
+            <TextView
+                android:id="@+id/product_details_address_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_address_scity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_accepts_mp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_seller_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seller Info" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/image_placeholder"/>
+
+            <TextView
+                android:id="@+id/product_details_seller_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_seller_canceled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <TextView
+                android:id="@+id/product_details_seller_complete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
+
+            <Button
+                android:id="@+id/product_details_go_to_product"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="#00f"
+                android:hint="go to product"
+                android:padding="5dp"
+                android:textColorHint="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+            <Button
+                android:id="@+id/product_details_go_seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#f00"
+                android:hint="go seller page"
+                android:padding="5dp"
+                android:textColorHint="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

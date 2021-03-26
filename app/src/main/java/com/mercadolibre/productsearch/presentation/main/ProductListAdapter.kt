@@ -9,7 +9,7 @@ import com.mercadolibre.productsearch.databinding.ProductCardItemLayoutBinding
 import com.mercadolibre.productsearch.domain.entities.Product
 
 interface OnProductClicked {
-    fun onProductClicked(item: String)
+    fun onProductClicked(item: Product)
 }
 
 class ProductListAdapter(private val onItemClicked: OnProductClicked) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
@@ -46,7 +46,7 @@ class ProductListAdapter(private val onItemClicked: OnProductClicked) : Recycler
                 .into(binding.cardImage)
 
             binding.root.setOnClickListener {
-                onProductClicked.onProductClicked(product.id)
+                onProductClicked.onProductClicked(product)
             }
         }
     }
