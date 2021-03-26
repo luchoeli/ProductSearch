@@ -37,12 +37,12 @@ class ProductListAdapter(private val onItemClicked: OnProductClicked) : Recycler
     class ViewHolder(private val binding: ProductCardItemLayoutBinding, private val onProductClicked: OnProductClicked) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(product: Product) {
-            binding.cardText.text = product.id
-            binding.cardText2.text = product.title
+            binding.productCardTitle.text = product.title
+            binding.productCardPrice.text = product.price.toString()
             Glide.with(binding.root.context)
                 .load(product.image)
                 .centerCrop()
-                .placeholder(R.drawable.ic_launcher_background) // fixme
+                .placeholder(R.mipmap.image_placeholder)
                 .into(binding.cardImage)
 
             binding.root.setOnClickListener {

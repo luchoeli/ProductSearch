@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mercadolibre.productsearch.databinding.FragmentSearchBinding
 import com.mercadolibre.productsearch.domain.entities.Product
@@ -36,9 +37,12 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
 
     private fun initRecyclerView() {
         productListAdapter = ProductListAdapter(this)
+        val layoutManagers =  LinearLayoutManager(this.context)
+        val dividerItemDecoration = DividerItemDecoration(this.context, layoutManagers.orientation )
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this.context)
+            layoutManager = layoutManagers
             adapter = productListAdapter
+            addItemDecoration(dividerItemDecoration)
         }
     }
 
@@ -62,7 +66,6 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
 
     private fun drawProducts(products: List<Product>?) {
         products?.let { items ->
-            // TODO update recyclerView
             productListAdapter.updateItems(items)
             productListAdapter.notifyDataSetChanged()
         } ?: showError(Exception("No products found"))
