@@ -15,9 +15,10 @@ class ProductMapper : BaseMapperRepository<ProductResponse, Product> {
                 title = title,
                 price = price,
                 image = thumbnail,
-                address = transformAddress(address),
+                permalink = permalink,
+                address = address?.let { transformAddress(it) },
                 acceptsMercadopago = accepts_mercadopago,
-                sellerInfo = transformSellerInfo(seller)
+                sellerInfo = seller?.let { transformSellerInfo(it) }
             )
         }
 
@@ -30,13 +31,16 @@ class ProductMapper : BaseMapperRepository<ProductResponse, Product> {
         with(response) {
             ProductAddressEntity(
                 state_name = state_name,
-                city_name = city_name
+                city_name = city_name,
+                city_id = city_id,
+                state_id = state_id
             )
         }
 
     private fun transformSellerInfo(response: ProductSellerInfoResponse): SellerInfoEntity =
         with(response) {
             SellerInfoEntity(
+                id = id,
                 link = permalink,
                 logo = car_dealer_logo,
                 total = seller_reputation.transactions.total,

@@ -43,10 +43,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="wrap_content"
+                android:text="@string/app_name"
                 android:layout_height="wrap_content"
                 tools:text= "Buscar Producto"
                 android:gravity="center" />
-
 
             <ImageView
                 android:id="@+id/iv_close"
@@ -54,6 +54,7 @@
                 android:layout_height="@dimen/close_dialog_img_size"
                 android:layout_marginEnd="@dimen/spacing_small"
                 android:src="@drawable/ic_close_image"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -67,6 +68,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height"
         android:background="@drawable/border_bottom"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

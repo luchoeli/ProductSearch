@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class SellerInfoEntity(
+    val id: Long,
     val link: String,
     val logo: String? = StringUtils.EMPTY_STRING,
     val total: Int,

@@ -8,111 +8,108 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
+        android:layout_margin="@dimen/product_details_card_margin"
+        app:cardCornerRadius="@dimen/product_details_card_corner_radius"
+        app:cardElevation="@dimen/prioduct_details_card_elevation"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/product_details_image"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/image_placeholder"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/product_details_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <ImageView
+                    android:id="@+id/product_details_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/image_placeholder"/>
 
-            <TextView
-                android:id="@+id/product_details_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/product_details_address_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Address info" />
+                <TextView
+                    android:id="@+id/product_details_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/product_details_address_state"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_address_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Address info" />
 
-            <TextView
-                android:id="@+id/product_details_address_scity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_address_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/product_details_accepts_mp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_address_scity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/product_details_seller_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Seller Info" />
+                <TextView
+                    android:id="@+id/product_details_accepts_mp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/image_placeholder"/>
+                <TextView
+                    android:id="@+id/product_details_seller_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Seller Info" />
 
-            <TextView
-                android:id="@+id/product_details_seller_total"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/image_placeholder"/>
 
-            <TextView
-                android:id="@+id/product_details_seller_canceled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_seller_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/product_details_seller_complete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                <TextView
+                    android:id="@+id/product_details_seller_canceled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/product_details_go_to_product"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="100dp"
-                android:background="#00f"
-                android:hint="go to product"
-                android:padding="5dp"
-                android:textColorHint="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold|italic" />
+                <TextView
+                    android:id="@+id/product_details_seller_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/product_details_go_seller"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="#f00"
-                android:hint="go seller page"
-                android:padding="5dp"
-                android:textColorHint="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold|italic" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/product_details_go_to_product"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/black"
+                    android:hint="@string/go_to_product"
+                    android:padding="@dimen/product_details_btn_padding"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/product_details_btn_size"
+                    android:textStyle="bold|italic" />
+
+                <Button
+                    android:id="@+id/product_details_go_seller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/design_default_color_secondary"
+                    android:hint="@string/go_seller_page"
+                    android:padding="@dimen/product_details_btn_padding"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/product_details_btn_size"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

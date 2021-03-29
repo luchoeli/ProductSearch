@@ -6,11 +6,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.mercadolibre.productsearch.R
 import com.mercadolibre.productsearch.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.pager
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
+    private val productViewModel by viewModel<SearchViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +26,10 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Search"
-                    tab.setIcon(R.drawable.ic_chevron_left)
+                    tab.text = getString(R.string.main_activity_tab_search_text)
                 }
                 1 -> {
-                    tab.text = "Favorites"
+                    tab.text = getString(R.string.main_activity_tab_favorites)
                 }
             }
         }.attach()

@@ -14,10 +14,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SearchViewModel(private val repository: ProductsRepository) : ViewModel() {
-    private var _productsLiveData = MutableLiveData<UiStatus<List<Product>>>()
 
+    private var _productsLiveData = MutableLiveData<UiStatus<List<Product>>>()
     val productsLiveData: LiveData<UiStatus<List<Product>>>
         get() = _productsLiveData
+
+    val favoritesLiveData = repository.getFavoritesProducts()
+
+    fun addFavorite(product: Product) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            repository.insertFavorite(product)
+        }
+    }
 
     fun getProducts(inputSearch: String) = viewModelScope.launch {
         _productsLiveData.value = UiStatus(Status.LOADING)
@@ -28,7 +36,8 @@ class SearchViewModel(private val repository: ProductsRepository) : ViewModel() 
                     _productsLiveData.value = UiStatus(status = Status.SUCCESS, data = result.data)
                 }
                 is Result.Failure -> {
-                    _productsLiveData.value = UiStatus(status = Status.ERROR, error = result.exception)
+                    _productsLiveData.value =
+                        UiStatus(status = Status.ERROR, error = result.exception)
                 }
             }
         }

@@ -4,25 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mercadolibre.productsearch.R
 import com.mercadolibre.productsearch.databinding.FragmentSearchBinding
 import com.mercadolibre.productsearch.domain.entities.Product
 import com.mercadolibre.productsearch.presentation.base.Status
 import com.mercadolibre.productsearch.presentation.base.UiStatus
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClicked {
 
     private lateinit var binding: FragmentSearchBinding
-    private val viewModel by viewModel<SearchViewModel>()
+    private val viewModel by sharedViewModel<SearchViewModel>()
     private lateinit var productListAdapter: ProductListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +35,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
         initRecyclerView()
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun initRecyclerView() {
         productListAdapter = ProductListAdapter(this)
-        val layoutManagers =  LinearLayoutManager(this.context)
+        val layoutManagers = LinearLayoutManager(this.context)
         binding.recyclerView.apply {
             layoutManager = layoutManagers
             adapter = productListAdapter
@@ -77,11 +71,10 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
     }
 
     private fun drawProducts(products: List<Product>?) {
-
         products?.let { items ->
             productListAdapter.updateItems(items)
             productListAdapter.notifyDataSetChanged()
-        } ?: showError(Exception("No products found"))
+        } ?: showError(Exception(getString(R.string.products_not_found)))
     }
 
     private fun showError(error: Exception?) {
@@ -89,18 +82,13 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, OnProductClic
     }
 
     override fun onProductClicked(item: Product) {
-        Toast.makeText(this.context, "lucho", Toast.LENGTH_LONG).show()
         findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProductDetailsFragment(item))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onQueryTextSubmit(searchInput: String?): Boolean {
         searchInput?.let {
             viewModel.getProducts(searchInput)
-        } ?: showError(Exception("lala"))
+        } ?: showError(Exception(getString(R.string.search_fragment_error_empty_input)))
         return false
     }
 
